@@ -1,24 +1,27 @@
 function indexOf(str, subStr) {
-  const index = -1
+  let i = 0,
+    j = 0
   const strLen = str.length
-  const subStrtrLen = subStr.length
-
-  for (let i = 0; i < strLen; i++) {
-    if (strLen - i < subStrtrLen) {
-      // 子串长度大于母串剩余长度
-      return index
-    }
-    for (let j = 0; j < subStrtrLen; j++) {
-      if (str[i + j] !== subStr[j]) {
-        // 对比不相等,直接让母串下一位
-        break
-      } else if (j === subStrtrLen - 1) {
-        // 子串遍历完之后,都相等,返回母串开始的下标
-        return i
-      }
+  const subStrLen = subStr.length
+  while (i < strLen && j < subStrLen) {
+    if (str[i] === subStr[j]) {
+      // 一直比较,直到其中一个串被遍历完,或者两者对应不相等
+      i++
+      j++
+    } else {
+      // j值充值为0, i回到与subStr初始对比位置的下一位
+      i = i - j + 1
+      j = 0
     }
   }
-  return index
+  if (j >= subStrLen) {
+    return i - j
+  } else {
+    return -1
+  }
 }
 
 console.log(indexOf('aaaaabaaaacaaaadaaaammmm', 'aaam'))
+console.log(indexOf('abcdefg', 'aaa'))
+console.log(indexOf('000010000111001002002222', '0022'))
+console.log(indexOf('ashdqweoahsdiqhwdasdgsdg', 'wda'))
