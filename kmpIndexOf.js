@@ -54,5 +54,3 @@ console.log(indexOf('aaaaabaaaacaaaadaaaammmm', 'aaam'))
 console.log(indexOf('abcdefg', 'aaa'))
 console.log(indexOf('000010000111001002002222', '0022'))
 console.log(indexOf('ashdqweoahsdiqhwdasdgsdg', 'wda'))
-
-console.log(getStrNextArr('abx'))
